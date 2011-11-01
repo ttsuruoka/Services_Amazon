@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.11" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Services_Amazon</name>
+ <channel>pear.php.net</channel>
+ <summary>PHP interface to Amazon Product Advertising API</summary>
+ <description>Services_Amazon:
+* PHP interface to Amazon Product Advertising API
+* All APIs are supported: Lookup and Search for products, Wishlists, Marketplace, carts, customers, similar item and so on
+* Provide an associate tag
+* Multiple locale support: US, UK, DE, JP, FR and CA
+* Caching support
+     
+Services_AmazonECS4:
+* DEPRECATED: After August 15, 2009, all requests will be denied.
+* A class using Amazon Associates Web Service 4.0 (Amazon E-Commerce Service 4.0)
+* Provide associate links
+* Remote cart support
+* Multiple locale support: US, UK, DE, JP, FR and CA
+* Caching support
+ </description>
+ <lead>
+  <name>Tatsuya Tsuruoka</name>
+  <user>ttsuruoka</user>
+  <email>tatsuya.tsuruoka@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>John Downey</name>
+  <user>AZTEK</user>
+  <email>jdowney@gmail.com</email>
+  <active>no</active>
+ </lead>
+ <date>2009-05-10</date>
+ <time>18:22:42</time>
+ <version>
+  <release>0.8.0</release>
+  <api>0.8.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>Services_Amazon (Amazon.php):
+* Breaking backward compatibility
+* Product Advertising API support
+* New APIs: TagLookup, VehiclePartLookup, VehiclePartSearch, VehicleSearch
+Services_AmazonECS4 (AmazonECS4.php):
+* Fixed Bug #13556: Incorrect Operation value for TransactionLookup
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="examples">
+    <file baseinstalldir="Services" name="amazon_ecs4_cache.php" role="doc" />
+    <file baseinstalldir="Services" name="amazon_ecs4_cart.php" role="doc" />
+    <file baseinstalldir="Services" name="amazon_ecs4_itemsearch.php" role="doc" />
+    <file baseinstalldir="Services" name="amazon_example1.php" role="doc" />
+    <file baseinstalldir="Services" name="config.php" role="doc" />
+   </dir> <!-- //examples -->
+   <file baseinstalldir="Services" name="Amazon.php" role="php">
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+   <file baseinstalldir="Services" name="AmazonECS4.php" role="php">
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <package>
+    <name>PEAR</name>
+    <channel>pear.php.net</channel>
+   </package>
+   <package>
+    <name>HTTP_Request</name>
+    <channel>pear.php.net</channel>
+   </package>
+   <package>
+    <name>XML_Serializer</name>
+    <channel>pear.php.net</channel>
+    <min>0.17.0</min>
+   </package>
+  </required>
+  <optional>
+   <package>
+    <name>Cache</name>
+    <channel>pear.php.net</channel>
+   </package>
+  </optional>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.7.1</release>
+    <api>0.7.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2007-12-17</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>Services_Amazon (Amazon.php):
+* Fixed Bug #10804: setLocale() and constructor bug
+Services_AmazonECS4 (AmazonECS4.php):
+* Fixed Bug #9529: Problem with Creator elements
+* Implemented Req #5869: Provide access to the raw XML
+* Implemented Req #10687: set array for SimilarityLookup
+* Implemented Req #12677: Proxy support
+ </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.7.0</release>
+    <api>0.7.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-11-04</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>Services_Amazon (Amazon.php):
+* Fixed Bug #8527: Using locale de, uk, jp and fr does not work
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.6.0</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-08-04</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>Services_AmazonECS4 (AmazonECS4.php):
+* Fixed Bug #8182: _checkContentError() always returns an error when doBatch() is called
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-05-20</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>Services_AmazonECS4 (AmazonECS4.php):
+* Fixed Bug #5821: E_NOTICE in AmazonECS4.php
+* Fixed Bug #6430: No unified return values (BC Break: Some items always be enumerated.)
+* Fixed Bug #7235: Deserialize error not caught 
+Services_Amazon (Amazon.php):
+* Fixed Bug #6605: reference to NULL element
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-18</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>Services_AmazonECS4:
+* Added caching support (Request #5672)
+Services_Amazon examples:
+* Fixed PHP_SELF XSS issue
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-09</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>Services_AmazonECS4:
+* Fixed Bug #5638
+Services_Amazon examples:
+* Fixed XSS issue
+* Cleaned up some code
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-06</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>* Fixed Request #2299
+* Fixed Request #4030
+* Added a new class Services_AmazonECS4 using Amazon E-Commerce Service version 4.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-08-21</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>-Amazon.php
+      o Changed constructor to allow base url and locale to be set for use when quering the server.
+      o Added methods setBaseUrl, getBaseUrl, setLocale, and getLocale.
+   </notes>
+  </release>
+ </changelog>
+</package>
