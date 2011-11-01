@@ -85,7 +85,7 @@ if (!defined('SERVICES_AMAZON_BASEURL')) {
  * Use this to retrieve a particular version of the Product Advertising API.
  */
 if (!defined('SERVICES_AMAZON_ECSVERSION')) {
-    define('SERVICES_AMAZON_ECSVERSION', '2009-03-31');
+    define('SERVICES_AMAZON_ECSVERSION', '2011-08-01');
 }
 
 /**
@@ -687,66 +687,6 @@ class Services_Amazon
     }
 
     /**
-     * Retrieves publicly available content written by specific Amazon customers
-     *
-     * @access public
-     * @param  string $customer_id A customer ID
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    CustomerContentSearch()
-     */
-    function CustomerContentLookup($customer_id, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'CustomerContentLookup';
-        $params['CustomerId'] = $customer_id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Searches for Amazon customers by name or email address
-     *
-     * @access public
-     * @param  array $customer A customer's name or its email
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    CustomerContentLookup()
-     */
-    function CustomerContentSearch($customer = null, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'CustomerContentSearch';
-        $params += $customer;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about operations and response groups
-     *
-     * Example:
-     * <code>
-     * <?php
-     * $amazon = new Services_Amazon('[your Access Key ID here]', '[your Secret Access key here]');
-     * $result = $amazon->Help('Operation', 'ItemLookup');
-     * ?>
-     * </code>
-     *
-     * @access public
-     * @param  string $help_type The type of information
-     * @param  string $about The name of an operation or a response group
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function Help($help_type, $about, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'Help';
-        $params['HelpType'] = $help_type;
-        $params['About'] = $about;
-        return $this->_sendRequest($params);
-    }
-        
-    /**
      * Retrieves information for products
      *
      * Example:
@@ -806,114 +746,6 @@ class Services_Amazon
     }
 
     /**
-     * Retrieves products in a specific list
-     *
-     * @access public
-     * @param  string $list_type The type of list
-     * @param  string $list_id A list ID
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    ListSearch()
-     */
-    function ListLookup($list_type, $list_id, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'ListLookup';
-        $params['ListType'] = $list_type;
-        $params['ListId'] = $list_id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Searches for a wish list, baby registry, or wedding registry
-     *
-     * Example:
-     * <code>
-     * <?php
-     * $amazon = new Services_Amazon('[your Access Key ID here]', '[your Secret Access key here]');
-     * $keywords = array('Name' => 'hoge');
-     * $result = $amazon->ListSearch('WishList', $keywords);
-     * ?>
-     * </code>
-     *
-     * @access public
-     * @param  string $list_type The type of list
-     * @param  array $keywords Parameters to search for
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    ListLookup()
-     */
-    function ListSearch($list_type, $keywords, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'ListSearch';
-        $params['ListType'] = $list_type;
-        $params += $keywords;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about Amazon zShops and Marketplace products
-     *
-     * @access public
-     * @param  string $id_type The type of ID
-     * @param  string $id The exchange ID or the listing ID
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    SellerListingSearch()
-     */
-    function SellerListingLookup($id_type, $id, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'SellerListingLookup';
-        $params['IdType'] = $id_type;
-        $params['Id'] = $id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Searches for Amazon zShops and Marketplace products
-     *
-     * Example:
-     * <code>
-     * <?php
-     * $amazon = new Services_Amazon('[your Access Key ID here]', '[your Secret Access key here]');
-     * $keywords = array('Keywords' => 'pizza');
-     * $result = $amazon->SellerListingSearch('zShops', $keywords);
-     * ?>
-     * </code>
-     *
-     * @access public
-     * @param  string $search_index The type of seller listings
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     * @see    SellerListingLookup()
-     */
-    function SellerListingSearch($search_index, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'SellerListingSearch';
-        $params['SearchIndex'] = $search_index;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about specific sellers
-     *
-     * @access public
-     * @param  string $seller_id IDs for Amazon sellers
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function SellerLookup($seller_id, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'SellerLookup';
-        $params['SellerId'] = $seller_id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
      * Retrieves products that are similar to Amazon products
      *
      * @access public
@@ -929,89 +761,6 @@ class Services_Amazon
             $item_id = implode(',', $item_id);
         }
         $params['ItemId'] = $item_id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about tags
-     *
-     * @access public
-     * @param  string $tag_name List of tag names
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function TagLookup($tag_name, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'TagLookup';
-        if (is_array($tag_name)) {
-            $tag_name = implode(',', $tag_name);
-        }
-        $params['TagName'] = $tag_name;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about the status of financial transactions
-     *
-     * @access public
-     * @param  string $transaction_id Transaction IDs
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function TransactionLookup($transaction_id, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'TransactionLookup';
-        $params['TransactionId'] = $transaction_id;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Retrieves information about a car part
-     *
-     * @access public
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function VehiclePartLookup($options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'VehiclePartLookup';
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Searches the parts that work in the car
-     *
-     * @access public
-     * @param  string $make_id 
-     * @param  string $model_id
-     * @param  string $year
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function VehiclePartSearch($make_id, $model_id, $year, $options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'VehiclePartSearch';
-        $params['MakeId'] = $make_id;
-        $params['ModelId'] = $model_id;
-        $params['Year'] = $year;
-        return $this->_sendRequest($params);
-    }
-
-    /**
-     * Searches all vehicles
-     *
-     * @access public
-     * @param  array $options The optional parameters
-     * @return array The array of information returned by the query
-     */
-    function VehicleSearch($options = array())
-    {
-        $params = $options;
-        $params['Operation'] = 'VehicleSearch';
         return $this->_sendRequest($params);
     }
 
@@ -1054,41 +803,6 @@ class Services_Amazon
     }
 
     /**
-     * Combines the different operations into a single request
-     *
-     * Example:
-     * <code>
-     * <?php
-     * $amazon = new Services_Amazon('[your Access Key ID here]', '[your Secret Access key here]');
-     * $params1 = array('SearchIndex' => 'Books',
-     *                  'Title' => 'sushi');
-     * $params2 = array('Keywords' => 'tempura');
-     * $result = $amazon->doMultiOperation('ItemSearch', $params1,
-     *                                     'SellerListingSearch', $params2);
-     * ?>
-     * </code>
-     *
-     * @access public
-     * @param  string $operation1 The first operation
-     * @param  array $params1 The parameters specific to the first request
-     * @param  string $operation2 The second operation
-     * @param  array $params2 The parameters specific to the second request
-     * @return array The array of information returned by the query
-     */
-    function doMultiOperation($operation1, $params1, $operation2, $params2)
-    {
-        $params = array();
-        $params['Operation'] = $operation1 . ',' . $operation2;
-        foreach ($params1 as $k => $v) {
-            $params[$operation1 . '.1.' . $k] = $v;
-        }
-        foreach ($params2 as $k => $v) {
-            $params[$operation2 . '.1.' . $k] = $v;
-        }
-        return $this->_sendRequest($params);
-    }
-
-    /**
      * Assembles the Item parameters
      *
      * @access private
@@ -1120,7 +834,7 @@ class Services_Amazon
      */
     function _ignoreCache($operation)
     {
-        $ignore = array('CartAdd', 'CartClear', 'CartGet', 'CartModify', 'TransactionLookup');
+        $ignore = array('CartAdd', 'CartClear', 'CartGet', 'CartModify');
         if (!strchr($operation, ',')) {
             return in_array($operation, $ignore);
         }
