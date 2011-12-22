@@ -8,8 +8,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <summary>PHP interface to Amazon Product Advertising API</summary>
  <description>Services_Amazon:
 * PHP interface to Amazon Product Advertising API
-* All APIs are supported: Lookup and Search for products, Wishlists, Marketplace, carts, customers, similar item and so on
-* Provide an associate tag
+* All APIs are supported: Lookup and Search for products, carts, similar items and so on
 * Multiple locale support: US, UK, DE, JP, FR and CA
 * Caching support
      
@@ -33,11 +32,11 @@ Services_AmazonECS4:
   <email>jdowney@gmail.com</email>
   <active>no</active>
  </lead>
- <date>2009-05-10</date>
- <time>18:22:42</time>
+ <date>2011-12-22</date>
+ <time>18:00:00</time>
  <version>
-  <release>0.8.0</release>
-  <api>0.8.0</api>
+  <release>0.9.0</release>
+  <api>0.9.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -45,11 +44,7 @@ Services_AmazonECS4:
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
  <notes>Services_Amazon (Amazon.php):
-* Breaking backward compatibility
-* Product Advertising API support
-* New APIs: TagLookup, VehiclePartLookup, VehiclePartSearch, VehicleSearch
-Services_AmazonECS4 (AmazonECS4.php):
-* Fixed Bug #13556: Incorrect Operation value for TransactionLookup
+* New Product Advertising API support
  </notes>
  <contents>
   <dir name="/">
@@ -60,12 +55,14 @@ Services_AmazonECS4 (AmazonECS4.php):
     <file baseinstalldir="Services" name="amazon_example1.php" role="doc" />
     <file baseinstalldir="Services" name="config.php" role="doc" />
    </dir> <!-- //examples -->
-   <file baseinstalldir="Services" name="Amazon.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
-   <file baseinstalldir="Services" name="AmazonECS4.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
+   <dir name="Services">
+    <file baseinstalldir="Services" name="Amazon.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file baseinstalldir="Services" name="AmazonECS4.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- //Services -->
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -99,6 +96,25 @@ Services_AmazonECS4 (AmazonECS4.php):
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.8.0</release>
+    <api>0.8.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-05-10</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>Services_Amazon (Amazon.php):
+* Breaking backward compatibility
+* Product Advertising API support
+* New APIs: TagLookup, VehiclePartLookup, VehiclePartSearch, VehicleSearch
+Services_AmazonECS4 (AmazonECS4.php):
+* Fixed Bug #13556: Incorrect Operation value for TransactionLookup
+ </notes>
+  </release>
   <release>
    <version>
     <release>0.7.1</release>
