@@ -49,17 +49,17 @@ Services_AmazonECS4:
  <contents>
   <dir name="/">
    <dir name="examples">
-    <file baseinstalldir="Services" name="amazon_ecs4_cache.php" role="doc" />
-    <file baseinstalldir="Services" name="amazon_ecs4_cart.php" role="doc" />
-    <file baseinstalldir="Services" name="amazon_ecs4_itemsearch.php" role="doc" />
-    <file baseinstalldir="Services" name="amazon_example1.php" role="doc" />
-    <file baseinstalldir="Services" name="config.php" role="doc" />
+    <file name="amazon_ecs4_cache.php" role="doc" />
+    <file name="amazon_ecs4_cart.php" role="doc" />
+    <file name="amazon_ecs4_itemsearch.php" role="doc" />
+    <file name="amazon_example1.php" role="doc" />
+    <file name="config.php" role="doc" />
    </dir> <!-- //examples -->
    <dir name="Services">
-    <file baseinstalldir="Services" name="Amazon.php" role="php">
+    <file name="Amazon.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
-    <file baseinstalldir="Services" name="AmazonECS4.php" role="php">
+    <file name="AmazonECS4.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
    </dir> <!-- //Services -->
